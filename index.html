@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELYSIAN ESTATES — International Ultra-Luxury Property Platform</title>
+  <meta name="description"
+    content="Discover the world's most prestigious luxury villas, penthouses, waterfront estates, and private residences across Islamabad, Lahore, Karachi, Peshawar, Dubai, and London.">
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1280&q=70" fetchpriority="high">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="luxury-body">
+
+  <!-- ====================================================================
+       TOP LUXURY STATUS TICKER
+  ==================================================================== -->
+  <header class="top-ticker" id="top-ticker">
+    <div class="container ticker-container">
+      <div class="ticker-left">
+        <span class="ticker-badge"><span class="ticker-pulse"></span> PRIVATE CLIENT SERVICES</span>
+        <span class="ticker-text">Exclusive Global Portfolios: Islamabad &bull; Lahore &bull; Karachi &bull; Peshawar
+          &bull; Dubai &bull; London</span>
+      </div>
+      <div class="ticker-right">
+        <div class="currency-picker-wrap">
+          <label for="currency-select" class="sr-only">Currency</label>
+          <span class="picker-label">Currency:</span>
+          <select id="currency-select" class="currency-select" aria-label="Select Currency">
+            <option value="USD">USD ($)</option>
+            <option value="AED">AED (د.إ)</option>
+            <option value="PKR">PKR (₨)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+          </select>
+        </div>
+        <span class="ticker-sep">|</span>
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme"
+          title="Toggle Light / Dark Theme">
+          <span class="theme-icon moon-icon">🌙</span>
+          <span class="theme-icon sun-icon">☀️</span>
+          <span class="theme-label" id="theme-label-text">Dark Mode</span>
+        </button>
+        <span class="ticker-sep">|</span>
+        <button class="ticker-link-btn" onclick="openAuthModal('signin')">Client Sign In</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       PREMIUM STICKY NAVIGATION BAR
+  ==================================================================== -->
+  <nav class="luxury-navbar" id="luxury-navbar">
+    <div class="container navbar-container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" onclick="resetFiltersAndScrollTop(event)">
+        <div class="logo-crest">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round" class="crest-svg">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <div class="logo-text-group">
+          <span class="brand-name">ELYSIAN</span>
+          <span class="brand-tagline">LUXURY ESTATES</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-links">
+        <li><a href="#properties-section" class="nav-link active">Properties</a></li>
+        <li><a href="#properties-section" class="nav-link" onclick="quickFilterPurpose('Sale')">Buy</a></li>
+        <li><a href="#properties-section" class="nav-link" onclick="quickFilterPurpose('Rent')">Rent</a></li>
+        <li><a href="#luxury-collection" class="nav-link gold-glow-link"><span class="crown-icon">⚜</span> Luxury
+            Collection</a></li>
+        <li><a href="#destinations-section" class="nav-link">Locations</a></li>
+        <li><a href="#agents-section" class="nav-link">Private Advisors</a></li>
+        <li><a href="#insights-section" class="nav-link">Insights</a></li>
+      </ul>
+
+      <!-- Action Utilities Right -->
+      <div class="navbar-actions">
+        <!-- Quick Search Trigger -->
+        <button class="nav-action-btn search-trigger-btn" onclick="focusSearchInput()" aria-label="Quick Search"
+          title="Search Properties">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- Favorites Trigger -->
+        <button class="nav-action-btn favorites-btn" onclick="openFavoritesDrawer()" aria-label="Saved Properties"
+          title="Saved Properties">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+            </path>
+          </svg>
+          <span class="counter-badge" id="favorites-count-badge">0</span>
+        </button>
+
+        <!-- Inquiries / Messages -->
+        <button class="nav-action-btn messages-btn" onclick="openMessagesDrawer()" aria-label="Messages & Inquiries"
+          title="Client Advisory Inquiries">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span class="counter-badge" id="inquiries-count-badge">2</span>
+        </button>
+
+        <!-- Client Portal / Dashboard -->
+        <button class="nav-action-btn user-portal-btn" onclick="openDashboardModal()" aria-label="Client Dashboard"
+          title="Private Client Portal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="user-portal-text">Dashboard</span>
+        </button>
+
+        <!-- Primary CTA: + Add Property -->
+        <button class="btn-premium-cta" onclick="openAddPropertyModal()">
+          <span class="btn-sparkle">+</span>
+          <span>Add Property</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Open Navigation Menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====================================================================
+       MOBILE NAVIGATION DRAWER
+  ==================================================================== -->
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" onclick="closeMobileNav()"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div class="mobile-nav-header">
+      <div class="logo-text-group">
+        <span class="brand-name">ELYSIAN</span>
+        <span class="brand-tagline">LUXURY ESTATES</span>
+      </div>
+      <button class="drawer-close-btn" onclick="closeMobileNav()" aria-label="Close menu">&times;</button>
+    </div>
+
+    <div class="mobile-nav-links">
+      <a href="#properties-section" onclick="closeMobileNav()" class="mobile-nav-item">Explore Properties</a>
+      <a href="#properties-section" onclick="quickFilterPurpose('Sale'); closeMobileNav()" class="mobile-nav-item">Buy
+        Prime Real Estate</a>
+      <a href="#properties-section" onclick="quickFilterPurpose('Rent'); closeMobileNav()" class="mobile-nav-item">Rent
+        Luxury Estates</a>
+      <a href="#luxury-collection" onclick="closeMobileNav()" class="mobile-nav-item gold-glow-link">⚜ The Luxury
+        Collection</a>
+      <a href="#destinations-section" onclick="closeMobileNav()" class="mobile-nav-item">Global Metropolises</a>
+      <a href="#agents-section" onclick="closeMobileNav()" class="mobile-nav-item">Senior Brokers & Advisors</a>
+      <a href="#insights-section" onclick="closeMobileNav()" class="mobile-nav-item">Market Insights & Reports</a>
+      <a href="#trust-section" onclick="closeMobileNav()" class="mobile-nav-item">Trust & Security Standards</a>
+    </div>
+
+    <div class="mobile-nav-footer">
+      <button class="btn-premium-cta full-width" onclick="openAddPropertyModal(); closeMobileNav()">
+        <span class="btn-sparkle">+</span>
+        <span>Add Property</span>
+      </button>
+      <div class="mobile-drawer-actions">
+        <button class="btn-glass" onclick="openFavoritesDrawer(); closeMobileNav()">Saved Homes (<span
+            id="mobile-fav-count">0</span>)</button>
+        <button class="btn-glass" onclick="openDashboardModal(); closeMobileNav()">Client Dashboard</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ====================================================================
+       HERO CINEMATIC EXPERIENCE
+  ==================================================================== -->
+  <section class="hero-experience" id="hero">
+    <!-- Ambient glowing backdrop lighting -->
+    <div class="hero-ambient-orb orb-1"></div>
+    <div class="hero-ambient-orb orb-2"></div>
+    <div class="hero-ambient-orb orb-3"></div>
+
+    <!-- Cinematic Background Image with Overlay -->
+    <div class="hero-bg-visual" id="hero-bg-visual"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content-wrapper">
+      <!-- Hero Editorial Badge & Title -->
+      <div class="hero-badge-pill">
+        <span class="crown-icon">⚜</span>
+        <span>THE WORLD'S FINEST RESIDENTIAL PORTFOLIO</span>
+      </div>
+
+      <h1 class="hero-headline">
+        Discover a Place <br>
+        <span class="gradient-gold-text">Worth Calling Home.</span>
+      </h1>
+
+      <p class="hero-subtext">
+        Curating an extraordinary portfolio of architectural masterpieces, prime penthouses, and private estates across
+        Pakistan, the Middle East, and premier global capitals.
+      </p>
+
+      <!-- FLOATING LUXURY SEARCH HUB -->
+      <div class="hero-search-hub" id="hero-search-hub">
+        <!-- Purpose Tabs -->
+        <div class="search-tabs">
+          <button class="search-tab active" data-purpose="All" onclick="setSearchPurpose('All', this)">All
+            Portfolios</button>
+          <button class="search-tab" data-purpose="Sale" onclick="setSearchPurpose('Sale', this)">Buy Real
+            Estate</button>
+          <button class="search-tab" data-purpose="Rent" onclick="setSearchPurpose('Rent', this)">Rent Prime
+            Estates</button>
+          <button class="search-tab" data-purpose="Exclusive" onclick="setSearchPurpose('Exclusive', this)">⚜ Private
+            Trophy Deals</button>
+        </div>
+
+        <!-- Main Search Inputs Row -->
+        <div class="search-fields-grid">
+          <!-- Keyword / Search Input -->
+          <div class="search-field-group">
+            <label for="hero-keyword-input" class="field-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              Keywords or Area
+            </label>
+            <input type="text" id="hero-keyword-input" placeholder="e.g. Margalla Hills, Palm Jumeirah, DHA..."
+              class="search-input" autocomplete="off">
+          </div>
+
+          <!-- Location Selector -->
+          <div class="search-field-group">
+            <label for="hero-city-select" class="field-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Prime Metropolis
+            </label>
+            <select id="hero-city-select" class="search-select">
+              <option value="All">All International Cities</option>
+              <option value="Islamabad">Islamabad (Diplomatic & Margalla)</option>
+              <option value="Lahore">Lahore (DHA, Gulberg & Model Town)</option>
+              <option value="Karachi">Karachi (Clifton & DHA Oceanfront)</option>
+              <option value="Peshawar">Peshawar (Hayatabad & DHA)</option>
+              <option value="Dubai">Dubai (Palm Jumeirah & Downtown)</option>
+              <option value="London">London (Mayfair & Knightsbridge)</option>
+              <option value="New York">New York (Manhattan Tribeca)</option>
+            </select>
+          </div>
+
+          <!-- Property Type Selector -->
+          <div class="search-field-group">
+            <label for="hero-type-select" class="field-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              Asset Class
+            </label>
+            <select id="hero-type-select" class="search-select">
+              <option value="All">All Property Types</option>
+              <option value="House">House</option>
+              <option value="Villa">Villa</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Flat">Flat</option>
+              <option value="Plot">Plot</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Office">Office</option>
+              <option value="Shop">Shop</option>
+              <option value="Penthouse">Sky Penthouse & Duplex</option>
+              <option value="Mansion">Waterfront & Country Mansion</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Price Range Selector -->
+          <div class="search-field-group">
+            <label for="hero-price-select" class="field-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+              Capital Range
+            </label>
+            <select id="hero-price-select" class="search-select">
+              <option value="All">Any Price Tier</option>
+              <option value="under1m">Under $1,000,000</option>
+              <option value="1m-3m">$1,000,000 - $3,000,000</option>
+              <option value="3m-6m">$3,000,000 - $6,000,000</option>
+              <option value="6m-plus">$6,000,000+ (Ultra High Net Worth)</option>
+            </select>
+          </div>
+
+          <!-- Bedrooms Selector -->
+          <div class="search-field-group bed-field-group">
+            <label for="hero-bed-select" class="field-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="field-icon">
+                <path d="M2 4v16"></path>
+                <path d="M2 8h18a2 2 0 0 1 2 2v10"></path>
+                <path d="M2 17h20"></path>
+                <path d="M6 8v9"></path>
+              </svg>
+              Bedrooms
+            </label>
+            <select id="hero-bed-select" class="search-select">
+              <option value="All">Beds (Any)</option>
+              <option value="2">2+ Bedrooms</option>
+              <option value="3">3+ Bedrooms</option>
+              <option value="4">4+ Bedrooms</option>
+              <option value="5">5+ Master Suites</option>
+            </select>
+          </div>
+
+          <!-- Search Action Buttons -->
+          <div class="search-actions-group">
+            <button class="btn-filter-trigger" onclick="openAdvancedFilterDrawer()" title="Open Advanced Filters">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+              </svg>
+              <span>Filters</span>
+            </button>
+            <button class="btn-execute-search" onclick="executeHeroSearch()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="icon-svg">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>Discover</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Search quick pill suggestions -->
+        <div class="search-quick-tags">
+          <span class="quick-tags-label">Trending Now:</span>
+          <button class="quick-tag-btn" onclick="applyQuickTag('Margalla Hills')">Margalla Hills, Islamabad</button>
+          <button class="quick-tag-btn" onclick="applyQuickTag('Palm Jumeirah')">Palm Jumeirah, Dubai</button>
+          <button class="quick-tag-btn" onclick="applyQuickTag('DHA Phase 8')">DHA Phase 8, Lahore</button>
+          <button class="quick-tag-btn" onclick="applyQuickTag('Clifton')">Clifton Seafront, Karachi</button>
+          <button class="quick-tag-btn" onclick="applyQuickTag('Penthouse')">Panoramic Penthouses</button>
+        </div>
+      </div>
+
+      <!-- Trust Badges Under Hero -->
+      <div class="hero-trust-bar">
+        <div class="trust-item">
+          <span class="trust-icon">🛡️</span>
+          <div>
+            <strong>100% Verified Deeds</strong>
+            <span>Rigorous legal audit</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">⚜️</span>
+          <div>
+            <strong>Off-Market Exclusives</strong>
+            <span>Discreet private transactions</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🏛️</span>
+          <div>
+            <strong>Institutional Escrow</strong>
+            <span>Secure cross-border escrow</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🤝</span>
+          <div>
+            <strong>Private Wealth Concierge</strong>
+            <span>Dedicated senior advisors</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       04 & 05: PROPERTY DISCOVERY & CATALOG BROWSER
+  ==================================================================== -->
+  <section class="properties-section section-padding" id="properties-section">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="section-header-flex">
+        <div class="section-title-wrap">
+          <div class="section-subtitle">
+            <span class="accent-line"></span>
+            <span>CURATED PORTFOLIOS</span>
+          </div>
+          <h2 class="section-heading">Featured & Prime Residences</h2>
+          <p class="section-description">
+            Explore meticulously vetted residential masterpieces, state-of-the-art penthouses, and sanctuary villas
+            ready for immediate private acquisition.
+          </p>
+        </div>
+
+        <!-- Catalog Toolbar: View modes & Sorting -->
+        <div class="catalog-toolbar">
+          <div class="active-results-badge">
+            <span id="results-count-number">0</span> Estates Found
+          </div>
+
+          <!-- Sorting selector -->
+          <div class="sort-selector-wrap">
+            <label for="catalog-sort-select" class="sort-label">Sort By:</label>
+            <select id="catalog-sort-select" class="sort-select" onchange="handleSortChange(this.value)">
+              <option value="featured">Featured & Premier</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="newest">Newest Listed</option>
+              <option value="area-desc">Area: Largest Space</option>
+              <option value="rating">Client Satisfaction Rating</option>
+            </select>
+          </div>
+
+          <!-- View Switcher Buttons (Grid vs List) -->
+          <div class="view-toggle-group">
+            <button class="view-toggle-btn active" id="view-grid-btn" onclick="setViewMode('grid')"
+              aria-label="Grid View" title="Grid Layout">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </button>
+            <button class="view-toggle-btn" id="view-list-btn" onclick="setViewMode('list')" aria-label="List View"
+              title="List Layout">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Filter drawer trigger -->
+          <button class="btn-glass filter-drawer-btn" onclick="openAdvancedFilterDrawer()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            <span>All Filters</span>
+          </button>
+
+          <!-- Add Property Direct Trigger in Catalog -->
+          <button class="btn-premium-cta add-prop-catalog-btn" onclick="openAddPropertyModal()"
+            title="Add New Property Listing">
+            <span class="btn-sparkle">+</span>
+            <span>Add Property</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Filter Pills Strip -->
+      <div class="filter-pills-strip">
+        <div class="pills-scroll-container">
+          <button class="filter-pill active" data-filter-type="category" data-val="All"
+            onclick="setQuickCategory('All', this)">All Portfolios</button>
+          <button class="filter-pill" data-filter-type="category" data-val="Houses"
+            onclick="setQuickCategory('House', this)">🏠 Houses</button>
+          <button class="filter-pill" data-filter-type="category" data-val="Villas"
+            onclick="setQuickCategory('Villa', this)">🏡 Villas</button>
+          <button class="filter-pill" data-filter-type="category" data-val="Apartments"
+            onclick="setQuickCategory('Apartment', this)">💎 Apartments & Flats</button>
+          <button class="filter-pill" data-filter-type="category" data-val="Plots"
+            onclick="setQuickCategory('Plot', this)">📐 Plots</button>
+          <button class="filter-pill" data-filter-type="category" data-val="Commercial"
+            onclick="setQuickCategory('Commercial', this)">🏢 Commercial & Offices</button>
+          <button class="filter-pill" data-filter-type="category" data-val="Shops"
+            onclick="setQuickCategory('Shop', this)">🛍️ Shops</button>
+          <button class="filter-pill" data-filter-type="category" data-val="Penthouses"
+            onclick="setQuickCategory('Penthouse', this)">🏙️ Sky Penthouses</button>
+          <button class="filter-pill" data-filter-type="category" data-val="Mansions"
+            onclick="setQuickCategory('Mansion', this)">🏰 Waterfront Mansions</button>
+          <button class="filter-pill" data-filter-type="category" data-val="Rent"
+            onclick="setQuickCategory('Rent', this)">🔑 Luxury Rentals</button>
+        </div>
+
+        <!-- Active Filter Pills Container with Clear All -->
+        <div class="active-filter-chips-wrap" id="active-filter-chips-wrap" style="display: none;">
+          <span class="chips-label">Applied Filters:</span>
+          <div class="chips-list" id="active-chips-list"></div>
+          <button class="clear-all-chips-btn" onclick="clearAllFilters()">Clear All</button>
+        </div>
+      </div>
+
+      <!-- Property Grid / List Container -->
+      <div class="property-grid-container grid-view" id="property-grid-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Empty State Container -->
+      <div class="empty-state-card" id="empty-state-card" style="display: none;">
+        <div class="empty-state-icon">🏛️</div>
+        <h3 class="empty-state-title">No Properties Match Your Refined Criteria</h3>
+        <p class="empty-state-text">We couldn't locate any listings matching all of your active filter parameters. Try
+          expanding your price range, choosing another city, or resetting filters.</p>
+        <div class="empty-state-actions">
+          <button class="btn-premium-cta" onclick="clearAllFilters()">Reset All Filters</button>
+          <button class="btn-glass" onclick="openMessagesDrawer()">Inquire with Private Broker</button>
+        </div>
+      </div>
+
+      <!-- Load More / Catalog Footer -->
+      <div class="catalog-pagination-wrap" id="catalog-pagination-wrap">
+        <button class="btn-glass-large" id="load-more-btn" onclick="loadMoreProperties()">
+          <span>View Additional Private Holdings</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       13: THE LUXURY COLLECTION (VIP TROPHY ASSETS)
+  ==================================================================== -->
+  <section class="luxury-collection-section" id="luxury-collection">
+    <div class="container">
+      <div class="luxury-collection-header">
+        <div class="gold-crest-badge">
+          <span>⚜</span> PRIVATE TROPHY ASSETS <span>⚜</span>
+        </div>
+        <h2 class="luxury-collection-heading">The Elysian Private Collection</h2>
+        <p class="luxury-collection-sub">
+          A restricted tier of ultra-prime architectural estates accessible exclusively through private appointment.
+          Each holding represents singular craftsmanship, peerless privacy, and supreme global prestige.
+        </p>
+      </div>
+
+      <!-- Luxury Showcase Grid -->
+      <div class="luxury-showcase-grid" id="luxury-showcase-grid">
+        <!-- Injected via JavaScript from VIP catalog items -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       12: EXPLORE METROPOLISES (DESTINATIONS)
+  ==================================================================== -->
+  <section class="destinations-section section-padding" id="destinations-section">
+    <div class="container">
+      <div class="section-header-flex">
+        <div class="section-title-wrap">
+          <div class="section-subtitle">
+            <span class="accent-line"></span>
+            <span>GLOBAL HUBS</span>
+          </div>
+          <h2 class="section-heading">Explore Premier Metropolises</h2>
+          <p class="section-description">
+            From the serene Margalla foothills in Islamabad to the glittering palm coastlines of Dubai and the historic
+            Mayfair streets of London.
+          </p>
+        </div>
+        <div class="destinations-nav-note">
+          <span class="note-badge">6 Flagship Cities</span>
+        </div>
+      </div>
+
+      <div class="destinations-grid">
+        <!-- Islamabad -->
+        <div class="destination-card" onclick="filterByCity('Islamabad')">
+          <div class="dest-image"
+            style="background-image: url('https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?auto=format&fit=crop&w=480&q=70');">
+          </div>
+          <div class="dest-gradient-overlay"></div>
+          <div class="dest-content">
+            <div class="dest-tag">Capital & Foothills</div>
+            <h3 class="dest-title">Islamabad</h3>
+            <p class="dest-sub">Margalla Ridge &bull; Diplomatic Enclave &bull; F-6/F-7</p>
+            <div class="dest-meta">
+              <span class="dest-count">18 Exclusive Estates</span>
+              <span class="dest-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lahore -->
+        <div class="destination-card" onclick="filterByCity('Lahore')">
+          <div class="dest-image"
+            style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=480&q=70');">
+          </div>
+          <div class="dest-gradient-overlay"></div>
+          <div class="dest-content">
+            <div class="dest-tag">Cultural Capital</div>
+            <h3 class="dest-title">Lahore</h3>
+            <p class="dest-sub">DHA Phases 5-8 &bull; Gulberg &bull; Lake City</p>
+            <div class="dest-meta">
+              <span class="dest-count">24 Curated Listings</span>
+              <span class="dest-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Karachi -->
+        <div class="destination-card" onclick="filterByCity('Karachi')">
+          <div class="dest-image"
+            style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=480&q=70');">
+          </div>
+          <div class="dest-gradient-overlay"></div>
+          <div class="dest-content">
+            <div class="dest-tag">Coastal Metropolis</div>
+            <h3 class="dest-title">Karachi</h3>
+            <p class="dest-sub">Clifton Oceanfront &bull; DHA Phase 8 &bull; Creek Vistas</p>
+            <div class="dest-meta">
+              <span class="dest-count">21 Oceanfront Residences</span>
+              <span class="dest-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Peshawar -->
+        <div class="destination-card" onclick="filterByCity('Peshawar')">
+          <div class="dest-image"
+            style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=480&q=70');">
+          </div>
+          <div class="dest-gradient-overlay"></div>
+          <div class="dest-content">
+            <div class="dest-tag">Historic Gateway</div>
+            <h3 class="dest-title">Peshawar</h3>
+            <p class="dest-sub">Hayatabad Enclave &bull; DHA Peshawar &bull; University Town</p>
+            <div class="dest-meta">
+              <span class="dest-count">12 Prime Mansions</span>
+              <span class="dest-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dubai -->
+        <div class="destination-card" onclick="filterByCity('Dubai')">
+          <div class="dest-image"
+            style="background-image: url('https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=480&q=70');">
+          </div>
+          <div class="dest-gradient-overlay"></div>
+          <div class="dest-content">
+            <div class="dest-tag">Global Oasis</div>
+            <h3 class="dest-title">Dubai</h3>
+            <p class="dest-sub">Palm Jumeirah &bull; Downtown Sky &bull; Emirates Hills</p>
+            <div class="dest-meta">
+              <span class="dest-count">36 Sky & Water Assets</span>
+              <span class="dest-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- London -->
+        <div class="destination-card" onclick="filterByCity('London')">
+          <div class="dest-image"
+            style="background-image: url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=480&q=70');">
+          </div>
+          <div class="dest-gradient-overlay"></div>
+          <div class="dest-content">
+            <div class="dest-tag">Old World Royalty</div>
+            <h3 class="dest-title">London</h3>
+            <p class="dest-sub">Mayfair &bull; Knightsbridge &bull; Belgravia Mansions</p>
+            <div class="dest-meta">
+              <span class="dest-count">15 Trophy Residences</span>
+              <span class="dest-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       11: INTERACTIVE NEIGHBORHOOD & MAP EXPERIENCE
+  ==================================================================== -->
+  <section class="location-map-section section-padding" id="location-experience">
+    <div class="container">
+      <div class="section-title-wrap text-center max-w-700">
+        <div class="section-subtitle justify-center">
+          <span class="accent-line"></span>
+          <span>SPATIAL INTELLIGENCE</span>
+          <span class="accent-line"></span>
+        </div>
+        <h2 class="section-heading">Interactive Prime Neighborhood Guide</h2>
+        <p class="section-description">
+          Explore key lifestyle proximities, world-class international academies, private aviation terminals, fine
+          dining, and healthcare centers across our prime enclave properties.
+        </p>
+      </div>
+
+      <!-- Map Explorer Container -->
+      <div class="interactive-map-card">
+        <!-- Map Sidebar with POI categories -->
+        <div class="map-poi-sidebar">
+          <div class="poi-sidebar-header">
+            <h4>Points of Interest</h4>
+            <span class="poi-active-count" id="poi-count-indicator">12 Places Nearby</span>
+          </div>
+
+          <div class="poi-categories-list">
+            <button class="poi-category-btn active" data-poi="all" onclick="filterMapPoi('all', this)">
+              <span class="poi-icon">🌐</span> All Lifestyle Destinations
+            </button>
+            <button class="poi-category-btn" data-poi="dining" onclick="filterMapPoi('dining', this)">
+              <span class="poi-icon">🍷</span> Michelin & Fine Dining
+            </button>
+            <button class="poi-category-btn" data-poi="schools" onclick="filterMapPoi('schools', this)">
+              <span class="poi-icon">🎓</span> International Academies
+            </button>
+            <button class="poi-category-btn" data-poi="aviation" onclick="filterMapPoi('aviation', this)">
+              <span class="poi-icon">✈️</span> Helipads & International Airports
+            </button>
+            <button class="poi-category-btn" data-poi="wellness" onclick="filterMapPoi('wellness', this)">
+              <span class="poi-icon">🏥</span> VIP Healthcare & Spas
+            </button>
+            <button class="poi-category-btn" data-poi="shopping" onclick="filterMapPoi('shopping', this)">
+              <span class="poi-icon">🛍️</span> Luxury Haute Boutiques
+            </button>
+          </div>
+
+          <div class="selected-property-preview" id="map-property-preview">
+            <div class="preview-mini-thumb" id="map-preview-img"
+              style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=200&q=70');">
+            </div>
+            <div class="preview-mini-info">
+              <h5 id="map-preview-title">The Margalla Ridge Sanctuary</h5>
+              <p id="map-preview-loc">Sector F-6/3, Islamabad</p>
+              <strong id="map-preview-price">$4,850,000</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulated Vector Interactive Map Surface -->
+        <div class="map-interactive-canvas-wrap" id="map-interactive-canvas">
+          <div class="map-grid-overlay"></div>
+
+          <!-- Animated Radar Rings -->
+          <div class="radar-ping ring-1"></div>
+          <div class="radar-ping ring-2"></div>
+
+          <!-- Stylized Map Landmarks and Roads -->
+          <svg class="map-roads-svg" viewBox="0 0 1000 600" preserveAspectRatio="none">
+            <path d="M 50 150 Q 300 200 600 120 T 950 250" stroke="rgba(20, 184, 166, 0.25)" stroke-width="6"
+              fill="none"></path>
+            <path d="M 120 550 C 250 400 450 350 750 480 S 900 350 950 100" stroke="rgba(212, 175, 55, 0.2)"
+              stroke-width="4" fill="none"></path>
+            <path d="M 300 50 L 320 580" stroke="rgba(255, 255, 255, 0.08)" stroke-width="3" stroke-dasharray="6,6"
+              fill="none"></path>
+            <path d="M 650 30 L 680 570" stroke="rgba(255, 255, 255, 0.08)" stroke-width="3" stroke-dasharray="6,6"
+              fill="none"></path>
+            <circle cx="520" cy="300" r="180" stroke="rgba(20, 184, 166, 0.15)" stroke-width="1.5"
+              fill="rgba(20, 184, 166, 0.02)"></circle>
+          </svg>
+
+          <!-- Interactive Property Hotspots & POI Pins -->
+          <div class="map-pins-container" id="map-pins-container">
+            <!-- Pins dynamically positioned -->
+          </div>
+
+          <!-- Map Controls UI -->
+          <div class="map-ui-controls">
+            <button class="map-ctrl-btn" onclick="zoomMap(1)" title="Zoom In">+</button>
+            <button class="map-ctrl-btn" onclick="zoomMap(-1)" title="Zoom Out">&minus;</button>
+            <button class="map-ctrl-btn" onclick="resetMapCenter()" title="Recenter Map">⌖</button>
+          </div>
+
+          <div class="map-legend">
+            <span class="legend-item"><span class="legend-dot gold"></span> Elysian Estate</span>
+            <span class="legend-item"><span class="legend-dot teal"></span> Nearby Amenity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       14: SENIOR PRIVATE WEALTH ADVISORS (AGENT DIRECTORY)
+  ==================================================================== -->
+  <section class="agents-section section-padding" id="agents-section">
+    <div class="container">
+      <div class="section-header-flex">
+        <div class="section-title-wrap">
+          <div class="section-subtitle">
+            <span class="accent-line"></span>
+            <span>PRIVATE ADVISORY</span>
+          </div>
+          <h2 class="section-heading">Senior Luxury Property Brokers</h2>
+          <p class="section-description">
+            Our discreet private advisors hold decades of confidential representation experience across family offices,
+            institutional investors, and sovereign buyers.
+          </p>
+        </div>
+        <button class="btn-glass" onclick="openMessagesDrawer()">Schedule Private Consultation</button>
+      </div>
+
+      <div class="agents-grid" id="agents-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       20: TRUST, SECURITY & DUE DILIGENCE
+  ==================================================================== -->
+  <section class="trust-section section-padding" id="trust-section">
+    <div class="container">
+      <div class="trust-content-box">
+        <div class="trust-header-center">
+          <div class="gold-crest-badge">INSTITUTIONAL INTEGRITY</div>
+          <h2 class="trust-heading">Engineered for Absolute Confidentiality & Trust</h2>
+          <p class="trust-lead">
+            Every transaction executed through Elysian adheres to strict anti-money laundering (AML) protocols,
+            sovereign land authority verifications, and encrypted escrow protection.
+          </p>
+        </div>
+
+        <div class="trust-pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h4>Triple-Vetted Land Records</h4>
+            <p>Direct verification with CDA, LDA, KDA, DHA, and Dubai Land Department to ensure clear titles without
+              encumbrances or litigation.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h4>Bonded Escrow Protection</h4>
+            <p>Earnest capital and milestone payments remain shielded inside tier-1 regulated banking partner escrow
+              accounts until title execution.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 14 14"></polyline>
+              </svg>
+            </div>
+            <h4>Strict NDA Confidentiality</h4>
+            <p>Discreet representation protecting the privacy and identity of high net worth individuals, diplomatic
+              corps, and corporate principals.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h4>Engineering & Structural Audit</h4>
+            <p>Full architectural, MEP (mechanical, electrical, plumbing), and structural seismic integrity certified
+              prior to closing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       21: ANIMATED STATISTICS COUNTERS
+  ==================================================================== -->
+  <section class="stats-section" id="stats-section">
+    <div class="container stats-container">
+      <div class="stat-card">
+        <div class="stat-number-wrap">
+          <span class="stat-prefix">$</span>
+          <span class="stat-counter" data-target="4.2">0</span>
+          <span class="stat-suffix">B+</span>
+        </div>
+        <div class="stat-label">Global Property Volume Closed</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number-wrap">
+          <span class="stat-counter" data-target="25">0</span>
+          <span class="stat-suffix">K+</span>
+        </div>
+        <div class="stat-label">Prime Luxury Properties Curated</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number-wrap">
+          <span class="stat-counter" data-target="8.8">0</span>
+          <span class="stat-suffix">K+</span>
+        </div>
+        <div class="stat-label">Discerning High Net Worth Clients</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number-wrap">
+          <span class="stat-counter" data-target="50">0</span>
+          <span class="stat-suffix">+</span>
+        </div>
+        <div class="stat-label">Global Metropolises Represented</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       22: CLIENT TESTIMONIALS CAROUSEL
+  ==================================================================== -->
+  <section class="testimonials-section section-padding" id="testimonials-section">
+    <div class="container">
+      <div class="section-title-wrap text-center max-w-700">
+        <div class="section-subtitle justify-center">
+          <span class="accent-line"></span>
+          <span>CLIENT SATISFACTION</span>
+          <span class="accent-line"></span>
+        </div>
+        <h2 class="section-heading">Words from Private Collectors</h2>
+        <p class="section-description">
+          Read candid reflections from distinguished owners and investors who entrusted Elysian with their premier
+          residential acquisitions.
+        </p>
+      </div>
+
+      <!-- Testimonial Slider Wrap -->
+      <div class="testimonials-slider-card">
+        <div class="testimonial-slides" id="testimonial-slides">
+          <!-- Slide 1 -->
+          <div class="testimonial-slide active" data-slide="0">
+            <div class="testimonial-rating">★★★★★</div>
+            <blockquote class="testimonial-quote">
+              “Elysian secured our family a private sanctuary overlooking the Margalla Hills before it even reached the
+              public eye. Their mastery of diplomatic protocol, legal deed clarity, and total discretion made the
+              multi-million dollar acquisition effortless.”
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-avatar"
+                style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=70');">
+              </div>
+              <div class="author-info">
+                <h4>Ambassador Tariq H.</h4>
+                <p>Acquired Hillside Villa &bull; Islamabad F-6</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="testimonial-slide" data-slide="1">
+            <div class="testimonial-rating">★★★★★</div>
+            <blockquote class="testimonial-quote">
+              “As a Dubai-based international tech founder, finding a duplex penthouse on Palm Jumeirah with complete
+              private berth rights felt challenging until Elysian stepped in. Their cross-border escrow took zero
+              friction.”
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-avatar"
+                style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=70');">
+              </div>
+              <div class="author-info">
+                <h4>Rashid Al-Zahrani</h4>
+                <p>Acquired Sky Penthouse &bull; Palm Jumeirah, Dubai</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="testimonial-slide" data-slide="2">
+            <div class="testimonial-rating">★★★★★</div>
+            <blockquote class="testimonial-quote">
+              “Listing our heritage colonial mansion in Lahore through Elysian's multi-step portal connected us with
+              institutional family offices within four days. The photography team and virtual 4K walkthrough set a new
+              benchmark in Pakistan.”
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-avatar"
+                style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=70');">
+              </div>
+              <div class="author-info">
+                <h4>Zainab Malik-Khan</h4>
+                <p>Seller & Estate Developer &bull; DHA Phase 8, Lahore</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <div class="testimonial-controls">
+          <button class="test-ctrl-btn prev" onclick="navigateTestimonial(-1)"
+            aria-label="Previous review">&#8592;</button>
+          <div class="testimonial-dots" id="testimonial-dots">
+            <span class="test-dot active" onclick="setTestimonialSlide(0)"></span>
+            <span class="test-dot" onclick="setTestimonialSlide(1)"></span>
+            <span class="test-dot" onclick="setTestimonialSlide(2)"></span>
+          </div>
+          <button class="test-ctrl-btn next" onclick="navigateTestimonial(1)" aria-label="Next review">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       23: REAL ESTATE INSIGHTS & EDITORIAL REPORTS
+  ==================================================================== -->
+  <section class="insights-section section-padding" id="insights-section">
+    <div class="container">
+      <div class="section-header-flex">
+        <div class="section-title-wrap">
+          <div class="section-subtitle">
+            <span class="accent-line"></span>
+            <span>MARKET INTELLIGENCE</span>
+          </div>
+          <h2 class="section-heading">Elysian Quarterly Insights</h2>
+          <p class="section-description">
+            Authoritative analysis on luxury capital flows, sovereign wealth allocations, architectural preservation,
+            and tax optimization.
+          </p>
+        </div>
+        <button class="btn-glass" onclick="openArticlesFilter('All')">View All Reports</button>
+      </div>
+
+      <div class="insights-grid" id="insights-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       24: NEWSLETTER & VIP INVESTOR BRIEF
+  ==================================================================== -->
+  <section class="newsletter-section" id="newsletter-section">
+    <div class="container">
+      <div class="newsletter-card">
+        <div class="newsletter-content">
+          <div class="gold-crest-badge">PRIVATE DISPATCH</div>
+          <h2 class="newsletter-heading">Get the Latest Properties Before Everyone Else.</h2>
+          <p class="newsletter-sub">
+            Join 14,000+ accredited private investors who receive our weekly off-market briefing, pre-launch
+            architectural developments, and confidential capital advisories.
+          </p>
+          <form class="newsletter-form" id="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+            <div class="newsletter-input-wrap">
+              <input type="email" id="newsletter-email" placeholder="Enter your confidential email address..." required
+                autocomplete="email">
+              <button type="submit" class="btn-premium-cta">
+                <span>Request VIP Dispatch</span>
+              </button>
+            </div>
+            <div class="newsletter-privacy-note">
+              🔒 Strictly encrypted. Zero third-party disclosures. Unsubscribe in 1 click.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       25: COMPREHENSIVE LUXURY FOOTER
+  ==================================================================== -->
+  <footer class="luxury-footer" id="main-footer">
+    <div class="container footer-container">
+      <!-- Col 1: Brand & Identity -->
+      <div class="footer-col brand-col">
+        <div class="logo-crest">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round" class="crest-svg">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <div class="logo-text-group mb-4">
+          <span class="brand-name">ELYSIAN</span>
+          <span class="brand-tagline">LUXURY ESTATES</span>
+        </div>
+        <p class="footer-bio">
+          The international benchmark for trophy residential brokerage, private family office advisory, and off-market
+          asset disposition.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon-link" aria-label="LinkedIn">IN</a>
+          <a href="#" class="social-icon-link" aria-label="Instagram">IG</a>
+          <a href="#" class="social-icon-link" aria-label="YouTube">YT</a>
+          <a href="#" class="social-icon-link" aria-label="Twitter">X</a>
+        </div>
+      </div>
+
+      <!-- Col 2: Properties -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Properties</h4>
+        <ul class="footer-links-list">
+          <li><a href="#properties-section" onclick="quickFilterPurpose('Sale')">Buy Real Estate</a></li>
+          <li><a href="#properties-section" onclick="quickFilterPurpose('Rent')">Rent Luxury Villas</a></li>
+          <li><a href="#luxury-collection">The Luxury Collection</a></li>
+          <li><a href="#properties-section" onclick="setQuickCategory('Penthouse')">Sky Penthouses</a></li>
+          <li><a href="#properties-section" onclick="setQuickCategory('Mansion')">Waterfront Mansions</a></li>
+          <li><a href="#" onclick="openListPropertyWizard()">List Your Property</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Prime Metropolises -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Flagship Cities</h4>
+        <ul class="footer-links-list">
+          <li><a href="#destinations-section" onclick="filterByCity('Islamabad')">Islamabad Estates</a></li>
+          <li><a href="#destinations-section" onclick="filterByCity('Lahore')">Lahore DHA Residences</a></li>
+          <li><a href="#destinations-section" onclick="filterByCity('Karachi')">Karachi Clifton Front</a></li>
+          <li><a href="#destinations-section" onclick="filterByCity('Peshawar')">Peshawar Enclaves</a></li>
+          <li><a href="#destinations-section" onclick="filterByCity('Dubai')">Dubai Palm Mansions</a></li>
+          <li><a href="#destinations-section" onclick="filterByCity('London')">London Mayfair Suites</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Resources & Advisory -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Advisory & Legal</h4>
+        <ul class="footer-links-list">
+          <li><a href="#trust-section">Title Verification Protocols</a></li>
+          <li><a href="#insights-section">Market Investment Reports</a></li>
+          <li><a href="#location-experience">Spatial Intelligence Guide</a></li>
+          <li><a href="#agents-section">Senior Broker Directory</a></li>
+          <li><a href="#" onclick="openMortgageQuickCalc()">Mortgage Estimator</a></li>
+          <li><a href="#" onclick="openDashboardModal()">Client Portal Sign In</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Global Concierge Contacts -->
+      <div class="footer-col contact-col">
+        <h4 class="footer-col-title">Private Concierge</h4>
+        <p class="contact-line"><strong>Islamabad Office:</strong> Blue Area, Diplomatic Corridor</p>
+        <p class="contact-line"><strong>Dubai Office:</strong> DIFC Gate District 4, UAE</p>
+        <p class="contact-line"><strong>Direct Private Line:</strong> +971 (0) 4 888 2390</p>
+        <p class="contact-line"><strong>Confidential Email:</strong> concierge@elysian-estates.com</p>
+        <div class="mt-4">
+          <button class="btn-glass full-width" onclick="openMessagesDrawer()">
+            <span>Speak with Senior Partner</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Disclaimers -->
+    <div class="footer-bottom-bar">
+      <div class="container footer-bottom-inner">
+        <div class="footer-copy">
+          &copy; 2026 ELYSIAN LUXURY ESTATES S.A. All international rights reserved.
+        </div>
+        <div class="footer-legal-links">
+          <a href="#"
+            onclick="openNoticeModal('Privacy Policy', 'Elysian strictly adheres to international data security frameworks. Client inquiries, identity documents, and financial data are never shared or transferred to third parties without explicit legal consent.')">Privacy
+            Notice</a>
+          <span class="sep">&bull;</span>
+          <a href="#"
+            onclick="openNoticeModal('Terms of Advisory', 'All estate specifications, architectural dimensions, and financial returns are compiled from authorized developer filings and deed registries. Independent inspection is recommended.')">Terms
+            of Representation</a>
+          <span class="sep">&bull;</span>
+          <a href="#"
+            onclick="openNoticeModal('Anti-Money Laundering', 'All transactions comply with FATF international guidelines and sovereign regulatory commissions across Pakistan, the UAE, and the United Kingdom.')">AML
+            Compliance</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       07 & 08: INTERACTIVE PROPERTY DETAILS MODAL
+  ==================================================================== -->
+  <div class="modal-backdrop" id="property-modal-backdrop" onclick="closePropertyModal()"></div>
+  <div class="luxury-modal property-details-modal" id="property-details-modal" role="dialog"
+    aria-labelledby="modal-prop-title" aria-modal="true">
+    <!-- Close button -->
+    <button class="modal-close-btn" onclick="closePropertyModal()" aria-label="Close details">&times;</button>
+
+    <div class="modal-scroll-body" id="modal-prop-content">
+      <!-- Injected dynamically by openPropertyDetails(id) in app.js -->
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       FULLSCREEN LIGHTBOX GALLERY MODAL
+  ==================================================================== -->
+  <div class="lightbox-overlay" id="lightbox-overlay">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav-btn prev" onclick="navigateLightbox(-1)" aria-label="Previous photo">&#8592;</button>
+    <div class="lightbox-image-wrap">
+      <img src="" alt="Property full view" id="lightbox-img" class="lightbox-img">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-nav-btn next" onclick="navigateLightbox(1)" aria-label="Next photo">&#8594;</button>
+    <div class="lightbox-counter" id="lightbox-counter">1 / 5</div>
+  </div>
+
+  <!-- ====================================================================
+       06: ADVANCED FILTER SLIDE-OVER DRAWER
+  ==================================================================== -->
+  <div class="filter-drawer-backdrop" id="filter-drawer-backdrop" onclick="closeAdvancedFilterDrawer()"></div>
+  <aside class="advanced-filter-drawer" id="advanced-filter-drawer">
+    <div class="filter-drawer-header">
+      <div class="filter-drawer-title-group">
+        <h3>Advanced Portfolio Filters</h3>
+        <p>Calibrate your search parameters with surgical precision</p>
+      </div>
+      <button class="drawer-close-btn" onclick="closeAdvancedFilterDrawer()" aria-label="Close filters">&times;</button>
+    </div>
+
+    <div class="filter-drawer-body">
+      <!-- Purpose Selector -->
+      <div class="filter-section">
+        <label class="drawer-section-title">Acquisition Purpose</label>
+        <div class="pill-options-group">
+          <button class="drawer-pill-opt active" data-filter="purpose" data-val="All"
+            onclick="setDrawerFilter('purpose', 'All', this)">All</button>
+          <button class="drawer-pill-opt" data-filter="purpose" data-val="Sale"
+            onclick="setDrawerFilter('purpose', 'Sale', this)">Purchase / Buy</button>
+          <button class="drawer-pill-opt" data-filter="purpose" data-val="Rent"
+            onclick="setDrawerFilter('purpose', 'Rent', this)">Lease / Rent</button>
+        </div>
+      </div>
+
+      <!-- Prime City -->
+      <div class="filter-section">
+        <label for="drawer-city-select" class="drawer-section-title">Metropolitan Hub</label>
+        <select id="drawer-city-select" class="drawer-select" onchange="setDrawerFilter('city', this.value)">
+          <option value="All">All International Cities</option>
+          <option value="Islamabad">Islamabad</option>
+          <option value="Lahore">Lahore</option>
+          <option value="Karachi">Karachi</option>
+          <option value="Peshawar">Peshawar</option>
+          <option value="Dubai">Dubai</option>
+          <option value="London">London</option>
+          <option value="New York">New York</option>
+        </select>
+      </div>
+
+      <!-- Asset Class -->
+      <div class="filter-section">
+        <label class="drawer-section-title">Architectural Asset Class</label>
+        <div class="pill-options-group">
+          <button class="drawer-pill-opt active" data-filter="type" data-val="All"
+            onclick="setDrawerFilter('type', 'All', this)">All Types</button>
+          <button class="drawer-pill-opt" data-filter="type" data-val="House"
+            onclick="setDrawerFilter('type', 'House', this)">House</button>
+          <button class="drawer-pill-opt" data-filter="type" data-val="Villa"
+            onclick="setDrawerFilter('type', 'Villa', this)">Villa</button>
+          <button class="drawer-pill-opt" data-filter="type" data-val="Apartment"
+            onclick="setDrawerFilter('type', 'Apartment', this)">Apartment</button>
+          <button class="drawer-pill-opt" data-filter="type" data-val="Flat"
+            onclick="setDrawerFilter('type', 'Flat', this)">Flat</button>
+          <button class="drawer-pill-opt" data-filter="type" data-val="Plot"
+            onclick="setDrawerFilter('type', 'Plot', this)">Plot</button>
+          <button class="drawer-pill-opt" data-filter="type" data-val="Commercial"
+            onclick="setDrawerFilter('type', 'Commercial', this)">Commercial</button>
+          <button class="drawer-pill-opt" data-filter="type" data-val="Office"
+            onclick="setDrawerFilter('type', 'Office', this)">Office</button>
+          <button class="drawer-pill-opt" data-filter="type" data-val="Shop"
+            onclick="setDrawerFilter('type', 'Shop', this)">Shop</button>
+          <button class="drawer-pill-opt" data-filter="type" data-val="Penthouse"
+            onclick="setDrawerFilter('type', 'Penthouse', this)">Penthouse</button>
+          <button class="drawer-pill-opt" data-filter="type" data-val="Mansion"
+            onclick="setDrawerFilter('type', 'Mansion', this)">Mansion</button>
+          <button class="drawer-pill-opt" data-filter="type" data-val="Other"
+            onclick="setDrawerFilter('type', 'Other', this)">Other</button>
+        </div>
+      </div>
+
+      <!-- Price Range Slider -->
+      <div class="filter-section">
+        <div class="filter-label-split">
+          <label for="drawer-max-price-slider" class="drawer-section-title">Maximum Capital Investment</label>
+          <span class="filter-val-badge" id="drawer-price-display">$20,000,000+</span>
+        </div>
+        <input type="range" id="drawer-max-price-slider" min="500000" max="25000000" step="250000" value="25000000"
+          class="range-slider" oninput="handlePriceSlider(this.value)">
+        <div class="slider-ticks">
+          <span>$500K</span>
+          <span>$5M</span>
+          <span>$12M</span>
+          <span>$25M+</span>
+        </div>
+      </div>
+
+      <!-- Bedrooms -->
+      <div class="filter-section">
+        <label class="drawer-section-title">Bedrooms / Master Suites</label>
+        <div class="pill-options-group">
+          <button class="drawer-pill-opt active" data-filter="beds" data-val="All"
+            onclick="setDrawerFilter('beds', 'All', this)">Any</button>
+          <button class="drawer-pill-opt" data-filter="beds" data-val="2"
+            onclick="setDrawerFilter('beds', '2', this)">2+</button>
+          <button class="drawer-pill-opt" data-filter="beds" data-val="3"
+            onclick="setDrawerFilter('beds', '3', this)">3+</button>
+          <button class="drawer-pill-opt" data-filter="beds" data-val="4"
+            onclick="setDrawerFilter('beds', '4', this)">4+</button>
+          <button class="drawer-pill-opt" data-filter="beds" data-val="5"
+            onclick="setDrawerFilter('beds', '5', this)">5+ Suites</button>
+        </div>
+      </div>
+
+      <!-- Bathrooms -->
+      <div class="filter-section">
+        <label class="drawer-section-title">Spa Bathrooms</label>
+        <div class="pill-options-group">
+          <button class="drawer-pill-opt active" data-filter="baths" data-val="All"
+            onclick="setDrawerFilter('baths', 'All', this)">Any</button>
+          <button class="drawer-pill-opt" data-filter="baths" data-val="2"
+            onclick="setDrawerFilter('baths', '2', this)">2+</button>
+          <button class="drawer-pill-opt" data-filter="baths" data-val="3"
+            onclick="setDrawerFilter('baths', '3', this)">3+</button>
+          <button class="drawer-pill-opt" data-filter="baths" data-val="4"
+            onclick="setDrawerFilter('baths', '4', this)">4+</button>
+          <button class="drawer-pill-opt" data-filter="baths" data-val="5"
+            onclick="setDrawerFilter('baths', '5', this)">5+</button>
+        </div>
+      </div>
+
+      <!-- Minimum Area (Square Feet) -->
+      <div class="filter-section">
+        <div class="filter-label-split">
+          <label for="drawer-area-slider" class="drawer-section-title">Minimum Living Area (Sq Ft)</label>
+          <span class="filter-val-badge" id="drawer-area-display">Any Area</span>
+        </div>
+        <input type="range" id="drawer-area-slider" min="1000" max="15000" step="500" value="1000" class="range-slider"
+          oninput="handleAreaSlider(this.value)">
+        <div class="slider-ticks">
+          <span>1,000 sq ft</span>
+          <span>5,000 sq ft</span>
+          <span>10,000 sq ft</span>
+          <span>15,000+</span>
+        </div>
+      </div>
+
+      <!-- Amenities Checklist -->
+      <div class="filter-section">
+        <label class="drawer-section-title">Luxury Amenities & Inclusions</label>
+        <div class="checkbox-options-grid" id="amenities-checkboxes">
+          <label class="checkbox-item"><input type="checkbox" value="Swimming Pool"
+              onchange="toggleAmenityFilter('Swimming Pool')"> <span>Infinity Pool</span></label>
+          <label class="checkbox-item"><input type="checkbox" value="Private Gym"
+              onchange="toggleAmenityFilter('Private Gym')"> <span>Private Gym & Wellness</span></label>
+          <label class="checkbox-item"><input type="checkbox" value="Smart Home"
+              onchange="toggleAmenityFilter('Smart Home')"> <span>Lutron Smart Automation</span></label>
+          <label class="checkbox-item"><input type="checkbox" value="Private Elevator"
+              onchange="toggleAmenityFilter('Private Elevator')"> <span>Private Elevator</span></label>
+          <label class="checkbox-item"><input type="checkbox" value="Zen Garden"
+              onchange="toggleAmenityFilter('Zen Garden')"> <span>Landscaped Zen Garden</span></label>
+          <label class="checkbox-item"><input type="checkbox" value="Security & CCTV"
+              onchange="toggleAmenityFilter('Security & CCTV')"> <span>24/7 Armed Security</span></label>
+          <label class="checkbox-item"><input type="checkbox" value="Helipad" onchange="toggleAmenityFilter('Helipad')">
+            <span>Helipad Access</span></label>
+          <label class="checkbox-item"><input type="checkbox" value="Sea / Mountain View"
+              onchange="toggleAmenityFilter('Sea / Mountain View')"> <span>Panoramic Horizon Views</span></label>
+        </div>
+      </div>
+
+      <!-- Furnishing status -->
+      <div class="filter-section">
+        <label class="drawer-section-title">Furnishing Status</label>
+        <div class="pill-options-group">
+          <button class="drawer-pill-opt active" data-filter="furnishing" data-val="All"
+            onclick="setDrawerFilter('furnishing', 'All', this)">All</button>
+          <button class="drawer-pill-opt" data-filter="furnishing" data-val="Fully Furnished"
+            onclick="setDrawerFilter('furnishing', 'Fully Furnished', this)">Designer Furnished</button>
+          <button class="drawer-pill-opt" data-filter="furnishing" data-val="Semi Furnished"
+            onclick="setDrawerFilter('furnishing', 'Semi Furnished', this)">Semi-Furnished</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Drawer Action Footer -->
+    <div class="filter-drawer-footer">
+      <button class="btn-glass" onclick="resetAdvancedFilters()">Reset Parameters</button>
+      <button class="btn-premium-cta" onclick="applyAdvancedFilters()">
+        <span>Show Matching Estates</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ====================================================================
+       18: SCHEDULE A VIEWING MODAL
+  ==================================================================== -->
+  <div class="modal-backdrop" id="viewing-modal-backdrop" onclick="closeViewingModal()"></div>
+  <div class="luxury-modal viewing-modal" id="viewing-modal" role="dialog" aria-labelledby="viewing-modal-title"
+    aria-modal="true">
+    <button class="modal-close-btn" onclick="closeViewingModal()" aria-label="Close">&times;</button>
+
+    <div class="viewing-modal-inner">
+      <div class="viewing-modal-header">
+        <div class="gold-crest-badge">PRIVATE APPOINTMENT</div>
+        <h3 id="viewing-modal-title">Schedule a Private Estate Tour</h3>
+        <p>Coordinate an exclusive guided walkthrough with the listing principal.</p>
+        <div class="viewing-property-banner" id="viewing-property-banner">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <form class="viewing-form" id="viewing-form" onsubmit="handleViewingSubmit(event)">
+        <!-- Tour Type Selector -->
+        <div class="form-row">
+          <label class="form-label">Viewing Experience Format</label>
+          <div class="pill-options-group">
+            <button type="button" class="drawer-pill-opt active" data-tour-type="In-Person"
+              onclick="setTourType('In-Person', this)">In-Person Private Walkthrough</button>
+            <button type="button" class="drawer-pill-opt" data-tour-type="Virtual 4K"
+              onclick="setTourType('Virtual 4K', this)">Live 4K Ultra-HD Video Tour</button>
+          </div>
+        </div>
+
+        <!-- Date & Time Row -->
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label for="viewing-date" class="form-label">Preferred Date</label>
+            <input type="date" id="viewing-date" class="form-input" required>
+          </div>
+          <div class="form-field">
+            <label for="viewing-time" class="form-label">Preferred Time Slot</label>
+            <select id="viewing-time" class="form-select" required>
+              <option value="Morning">Morning (10:00 AM - 12:00 PM)</option>
+              <option value="Afternoon">Afternoon (02:00 PM - 04:30 PM)</option>
+              <option value="Sunset">Sunset Golden Hour (05:30 PM - 07:00 PM)</option>
+              <option value="Evening">Evening Private Illumination (08:00 PM)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Client Contact Details -->
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label for="viewing-name" class="form-label">Full Legal Name</label>
+            <input type="text" id="viewing-name" class="form-input" placeholder="e.g. Tariq Mansoor" required>
+          </div>
+          <div class="form-field">
+            <label for="viewing-phone" class="form-label">Direct Phone / WhatsApp</label>
+            <input type="tel" id="viewing-phone" class="form-input" placeholder="+971 50 123 4567" required>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="viewing-email" class="form-label">Confidential Email Address</label>
+          <input type="email" id="viewing-email" class="form-input" placeholder="client@familyoffice.com" required>
+        </div>
+
+        <div class="form-field">
+          <label for="viewing-notes" class="form-label">Special Requests or Security Protocols</label>
+          <textarea id="viewing-notes" class="form-textarea" rows="2"
+            placeholder="e.g. Helipad arrival, dietary preferences, private security detail accompaniment..."></textarea>
+        </div>
+
+        <div class="viewing-submit-actions">
+          <button type="button" class="btn-glass" onclick="closeViewingModal()">Cancel</button>
+          <button type="submit" class="btn-premium-cta">
+            <span>Confirm Private Reservation</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       15: COMPLETE ADD / EDIT PROPERTY MODAL & SYSTEM
+  ==================================================================== -->
+  <div class="modal-backdrop" id="add-property-modal-backdrop" onclick="closeAddPropertyModal()"></div>
+  <div class="luxury-modal add-property-modal" id="add-property-modal" role="dialog"
+    aria-labelledby="add-prop-modal-title" aria-modal="true">
+    <button class="modal-close-btn" onclick="closeAddPropertyModal()" aria-label="Close form">&times;</button>
+
+    <div class="add-property-container">
+      <!-- Modal Header -->
+      <div class="add-property-header">
+        <div class="gold-crest-badge" id="add-prop-header-badge">⚜ PRIVATE PROPERTY REGISTRATION ⚜</div>
+        <h3 id="add-prop-modal-title">Add Property / Add Home</h3>
+        <p id="add-prop-modal-subtitle">Submit your premier holding directly into the marketplace catalog and persistent
+          storage session.</p>
+      </div>
+
+      <!-- Error / Notification Banner -->
+      <div class="form-alert-banner error" id="prop-form-error-banner" style="display: none;">
+        <span class="alert-icon">⚠️</span>
+        <span id="prop-form-error-text">Please complete all required fields.</span>
+      </div>
+
+      <!-- Add Property Main Form -->
+      <form id="add-property-form" onsubmit="savePropertyForm(event)" novalidate>
+        <input type="hidden" id="prop-edit-id" value="">
+
+        <!-- SECTION 1: BASIC IDENTIFICATION & PURPOSE -->
+        <div class="form-section-card">
+          <div class="form-section-header">
+            <span class="sec-num">01</span>
+            <div>
+              <h4>Basic Information & Classification</h4>
+              <p>Define property identity, transaction model and pricing</p>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-field">
+              <label for="prop-title" class="form-label">Property Title <span class="req">*</span></label>
+              <input type="text" id="prop-title" class="form-input"
+                placeholder="e.g. Modern Minimalist Villa in Margalla Hills" required>
+            </div>
+            <div class="form-field">
+              <label for="prop-purpose" class="form-label">Purpose <span class="req">*</span></label>
+              <select id="prop-purpose" class="form-select" required>
+                <option value="Sale">For Sale</option>
+                <option value="Rent">For Rent</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-field">
+              <label for="prop-type" class="form-label">Property Type <span class="req">*</span></label>
+              <select id="prop-type" class="form-select" required>
+                <option value="House">House</option>
+                <option value="Villa">Villa</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Flat">Flat</option>
+                <option value="Plot">Plot</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Office">Office</option>
+                <option value="Shop">Shop</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="prop-price" class="form-label">Price (USD / Equivalency) <span class="req">*</span></label>
+              <input type="number" id="prop-price" class="form-input" placeholder="e.g. 3500000" min="100" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2: LOCATION & ADDRESS -->
+        <div class="form-section-card">
+          <div class="form-section-header">
+            <span class="sec-num">02</span>
+            <div>
+              <h4>Location & Regional Address</h4>
+              <p>Specify the metropolitan hub, local sector/enclave, and exact street address</p>
+            </div>
+          </div>
+
+          <div class="form-grid-3">
+            <div class="form-field">
+              <label for="prop-city" class="form-label">City <span class="req">*</span></label>
+              <select id="prop-city" class="form-select" required>
+                <option value="Islamabad">Islamabad</option>
+                <option value="Lahore">Lahore</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Rawalpindi">Rawalpindi</option>
+                <option value="Peshawar">Peshawar</option>
+                <option value="Multan">Multan</option>
+                <option value="Faisalabad">Faisalabad</option>
+                <option value="Dubai">Dubai</option>
+                <option value="London">London</option>
+                <option value="New York">New York</option>
+                <option value="Other">Other City</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="prop-location" class="form-label">Location / Area <span class="req">*</span></label>
+              <input type="text" id="prop-location" class="form-input" placeholder="e.g. Sector F-7/2 or DHA Phase 6"
+                required>
+            </div>
+            <div class="form-field">
+              <label for="prop-address" class="form-label">Full Address <span class="req">*</span></label>
+              <input type="text" id="prop-address" class="form-input"
+                placeholder="e.g. Street 14, Plot 32-B, Sector F-7/2" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: PHYSICAL SPECS & DETAILS -->
+        <div class="form-section-card">
+          <div class="form-section-header">
+            <span class="sec-num">03</span>
+            <div>
+              <h4>Dimensions & Property Specifications</h4>
+              <p>Key architectural numbers and living metrics</p>
+            </div>
+          </div>
+
+          <div class="form-grid-3">
+            <div class="form-field">
+              <label for="prop-beds" class="form-label">Bedrooms <span class="req">*</span></label>
+              <input type="number" id="prop-beds" class="form-input" value="4" min="0" max="30" required>
+            </div>
+            <div class="form-field">
+              <label for="prop-baths" class="form-label">Bathrooms <span class="req">*</span></label>
+              <input type="number" id="prop-baths" class="form-input" value="4" min="0" max="30" required>
+            </div>
+            <div class="form-field">
+              <label for="prop-size" class="form-label">Property Size (Sq Ft) <span class="req">*</span></label>
+              <input type="number" id="prop-size" class="form-input" placeholder="e.g. 4500" min="50" required>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="prop-desc" class="form-label">Property Description <span class="req">*</span></label>
+            <textarea id="prop-desc" class="form-textarea" rows="3"
+              placeholder="Provide an architectural overview, interior finishings, neighborhood advantages, and unique features of this property..."
+              required></textarea>
+          </div>
+        </div>
+
+        <!-- SECTION 4: OWNER / AGENT CONTACT INFO -->
+        <div class="form-section-card">
+          <div class="form-section-header">
+            <span class="sec-num">04</span>
+            <div>
+              <h4>Owner / Listing Agent Details</h4>
+              <p>Direct contact credentials shown on the public property dossier</p>
+            </div>
+          </div>
+
+          <div class="form-grid-3">
+            <div class="form-field">
+              <label for="prop-owner-name" class="form-label">Owner/Agent Name <span class="req">*</span></label>
+              <input type="text" id="prop-owner-name" class="form-input" placeholder="e.g. Malik Asfandyar" required>
+            </div>
+            <div class="form-field">
+              <label for="prop-contact-phone" class="form-label">Contact Number <span class="req">*</span></label>
+              <input type="tel" id="prop-contact-phone" class="form-input" placeholder="e.g. +92 300 1234567" required>
+            </div>
+            <div class="form-field">
+              <label for="prop-whatsapp-number" class="form-label">WhatsApp Number <span class="req">*</span></label>
+              <input type="tel" id="prop-whatsapp-number" class="form-input" placeholder="e.g. +92 300 1234567"
+                required>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 5: MULTI-IMAGE UPLOAD & GALLERY -->
+        <div class="form-section-card">
+          <div class="form-section-header">
+            <span class="sec-num">05</span>
+            <div>
+              <h4>Property Images <span class="req">* (At least 1 required)</span></h4>
+              <p>Upload high-resolution photography from your device or paste direct links</p>
+            </div>
+          </div>
+
+          <!-- Hidden Real File Input for Multiple Images -->
+          <input type="file" id="prop-file-input" multiple accept="image/*" style="display: none;"
+            onchange="handlePropertyImageFiles(event)">
+
+          <!-- Interactive Drag-and-Drop Zone -->
+          <div class="upload-dropzone" id="prop-upload-dropzone"
+            onclick="document.getElementById('prop-file-input').click()">
+            <div class="dropzone-icon">📷</div>
+            <div class="dropzone-text">
+              <strong>Click to Choose Images from Your Device</strong> or drag & drop files here
+            </div>
+            <div class="dropzone-sub">Upload multiple high-resolution photos (JPG, PNG, WebP). Files are automatically
+              optimized for fast local storage.</div>
+            <button type="button" class="btn-glass-small" style="margin-top: 0.75rem;">+ Browse Files</button>
+          </div>
+
+          <!-- Processing State Indicator -->
+          <div class="image-upload-loading" id="image-upload-loading" style="display: none;">
+            <div class="spinner-small"></div>
+            <span>Optimizing and loading images...</span>
+          </div>
+
+          <!-- Secondary Custom URL & Luxury Presets -->
+          <div class="image-alt-methods">
+            <div class="image-url-row">
+              <input type="url" id="prop-image-url-input" class="form-input"
+                placeholder="Or paste custom image web link (https://...)">
+              <button type="button" class="btn-glass" onclick="addPropertyImageUrl()">Add Link</button>
+            </div>
+
+            <div class="preset-images-strip">
+              <span class="preset-label">Quick Luxury Presets:</span>
+              <button type="button" class="btn-pill-small"
+                onclick="addPropertyPresetImage('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=720&q=75')">+
+                Modern Villa</button>
+              <button type="button" class="btn-pill-small"
+                onclick="addPropertyPresetImage('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=720&q=75')">+
+                Living Salon</button>
+              <button type="button" class="btn-pill-small"
+                onclick="addPropertyPresetImage('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=720&q=75')">+
+                Pool Deck</button>
+              <button type="button" class="btn-pill-small"
+                onclick="addPropertyPresetImage('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=720&q=75')">+
+                Kitchen Suite</button>
+            </div>
+          </div>
+
+          <!-- Live Thumbnails Preview Grid -->
+          <div class="uploaded-previews-wrap">
+            <div class="previews-header">
+              <span class="previews-count" id="previews-count-text">0 Images Uploaded</span>
+              <span class="previews-note">The first image will be used as the primary cover photo</span>
+            </div>
+            <div class="uploaded-previews-grid" id="prop-image-previews-container">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- FORM FOOTER & SUBMIT BUTTON -->
+        <div class="add-prop-footer-actions">
+          <button type="button" class="btn-glass" onclick="closeAddPropertyModal()">Cancel</button>
+          <button type="submit" class="btn-premium-cta" id="add-prop-submit-btn">
+            <span class="btn-sparkle">✦</span>
+            <span id="add-prop-submit-text">Add Property / Publish Property</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       15B: LUXURY DELETE PROPERTY CONFIRMATION MODAL
+  ==================================================================== -->
+  <div class="modal-backdrop" id="delete-confirm-backdrop" onclick="closeDeleteConfirmModal()"></div>
+  <div class="luxury-modal delete-confirm-modal" id="delete-confirm-modal" role="dialog"
+    aria-labelledby="delete-confirm-title" aria-modal="true">
+    <div class="delete-modal-inner">
+      <div class="delete-warning-icon">⚠️</div>
+      <h3 id="delete-confirm-title" class="delete-title">Are you sure you want to delete this property?</h3>
+      <p class="delete-subtext">This action will permanently remove this listing from the active catalog, search
+        indices, and your saved session records.</p>
+
+      <div class="delete-target-preview" id="delete-target-preview">
+        <!-- Target property summary injected dynamically -->
+      </div>
+
+      <div class="delete-actions-row">
+        <button type="button" class="btn-glass" onclick="closeDeleteConfirmModal()">Cancel</button>
+        <button type="button" class="btn-danger-cta" id="confirm-delete-action-btn" onclick="executeDeleteProperty()">
+          <span>Yes, Delete Property</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       16 & 17: USER ACCOUNT DASHBOARD MODAL
+  ==================================================================== -->
+  <div class="modal-backdrop" id="dashboard-modal-backdrop" onclick="closeDashboardModal()"></div>
+  <div class="luxury-modal dashboard-modal" id="dashboard-modal" role="dialog" aria-labelledby="dashboard-modal-title"
+    aria-modal="true">
+    <button class="modal-close-btn" onclick="closeDashboardModal()" aria-label="Close">&times;</button>
+
+    <div class="dashboard-inner-wrap">
+      <!-- Sidebar Navigation -->
+      <aside class="dashboard-sidebar">
+        <div class="dashboard-user-card">
+          <div class="user-avatar-large">PA</div>
+          <div class="user-meta">
+            <h4>Private Client Portal</h4>
+            <span class="membership-badge">⚜ Tier-1 Sovereign Member</span>
+          </div>
+        </div>
+
+        <nav class="dashboard-nav-tabs">
+          <button class="dash-tab-btn active" data-tab="overview" onclick="switchDashTab('overview', this)">
+            <span class="dash-tab-icon">📊</span> Overview & Wealth
+          </button>
+          <button class="dash-tab-btn" data-tab="favorites" onclick="switchDashTab('favorites', this)">
+            <span class="dash-tab-icon">❤️</span> Saved Properties (<span id="dash-fav-count">0</span>)
+          </button>
+          <button class="dash-tab-btn" data-tab="my-listings" onclick="switchDashTab('my-listings', this)">
+            <span class="dash-tab-icon">🏛️</span> My Listed Estates (<span id="dash-listings-count">0</span>)
+          </button>
+          <button class="dash-tab-btn" data-tab="viewings" onclick="switchDashTab('viewings', this)">
+            <span class="dash-tab-icon">📅</span> Scheduled Viewings (<span id="dash-viewings-count">1</span>)
+          </button>
+          <button class="dash-tab-btn" data-tab="inquiries" onclick="switchDashTab('inquiries', this)">
+            <span class="dash-tab-icon">💬</span> Broker Messages (<span id="dash-msg-count">2</span>)
+          </button>
+          <button class="dash-tab-btn" data-tab="settings" onclick="switchDashTab('settings', this)">
+            <span class="dash-tab-icon">⚙️</span> Preferences & Security
+          </button>
+        </nav>
+      </aside>
+
+      <!-- Main Dashboard Content Panes -->
+      <main class="dashboard-main-content">
+        <!-- OVERVIEW PANE -->
+        <div class="dash-pane active" id="dash-pane-overview">
+          <div class="dash-pane-header">
+            <h3>Portfolio Intelligence Overview</h3>
+            <p>Real-time analytics for your saved acquisitions, active negotiations, and scheduled estate viewings.</p>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="dash-kpi-grid">
+            <div class="dash-kpi-card">
+              <span class="kpi-title">Saved Holdings</span>
+              <strong class="kpi-val" id="dash-kpi-saved">0</strong>
+              <span class="kpi-note">High priority tracking</span>
+            </div>
+            <div class="dash-kpi-card">
+              <span class="kpi-title">Your Active Listings</span>
+              <strong class="kpi-val" id="dash-kpi-listings">0</strong>
+              <span class="kpi-note">Published to global buyers</span>
+            </div>
+            <div class="dash-kpi-card">
+              <span class="kpi-title">Upcoming Viewings</span>
+              <strong class="kpi-val" id="dash-kpi-viewings">1</strong>
+              <span class="kpi-note">Confirmed private walkthroughs</span>
+            </div>
+            <div class="dash-kpi-card">
+              <span class="kpi-title">Inquiry Threads</span>
+              <strong class="kpi-val" id="dash-kpi-messages">2</strong>
+              <span class="kpi-note">Senior broker channel open</span>
+            </div>
+          </div>
+
+          <!-- Recent Activity & Quick Actions -->
+          <div class="dash-section-box">
+            <div class="box-header-flex">
+              <h4>Upcoming Private Viewing</h4>
+              <button class="btn-glass-small" onclick="switchDashTab('viewings')">Manage All</button>
+            </div>
+            <div class="viewing-ticket" id="dash-overview-viewing-card">
+              <div class="ticket-status-badge confirmed">CONFIRMED</div>
+              <div class="ticket-info">
+                <h5>The Margalla Ridge Sanctuary &bull; Sector F-6/3, Islamabad</h5>
+                <p>Date: <strong>October 14, 2026 at 05:30 PM (Sunset Hour)</strong> &bull; Walkthrough:
+                  <strong>In-Person VIP</strong></p>
+                <p>Private Escort: <strong>Sophia Reynolds (Senior Partner)</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAVED PROPERTIES PANE -->
+        <div class="dash-pane" id="dash-pane-favorites">
+          <div class="dash-pane-header">
+            <h3>Saved Properties & Wishlist</h3>
+            <p>Keep track of your favorite architectural holdings and receive live status or price adjustments.</p>
+          </div>
+          <div class="dash-favorites-grid" id="dash-favorites-grid">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+
+        <!-- MY LISTINGS PANE -->
+        <div class="dash-pane" id="dash-pane-my-listings">
+          <div class="dash-pane-header flex-between">
+            <div>
+              <h3>My Listed Estates</h3>
+              <p>Manage properties submitted through the Elysian multi-step portal.</p>
+            </div>
+            <button class="btn-premium-cta" onclick="closeDashboardModal(); openListPropertyWizard();">
+              <span>+ Add New Listing</span>
+            </button>
+          </div>
+          <div class="dash-listings-grid" id="dash-listings-grid">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+
+        <!-- SCHEDULED VIEWINGS PANE -->
+        <div class="dash-pane" id="dash-pane-viewings">
+          <div class="dash-pane-header">
+            <h3>Private Viewings & Appointments</h3>
+            <p>Confirmed and pending tours of premier international estates.</p>
+          </div>
+          <div class="viewings-list" id="dash-viewings-list">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+
+        <!-- INQUIRIES PANE -->
+        <div class="dash-pane" id="dash-pane-inquiries">
+          <div class="dash-pane-header flex-between">
+            <div>
+              <h3>Direct Broker Inquiries</h3>
+              <p>Confidential chat history with Senior Property Advisors.</p>
+            </div>
+            <button class="btn-glass" onclick="openMessagesDrawer()">Open Full Chat Drawer</button>
+          </div>
+          <div class="inquiry-threads-list" id="dash-inquiries-list">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+
+        <!-- PREFERENCES & SECURITY PANE -->
+        <div class="dash-pane" id="dash-pane-settings">
+          <div class="dash-pane-header">
+            <h3>Security & Membership Preferences</h3>
+            <p>Manage confidential communications, currency formatting, and login credentials.</p>
+          </div>
+          <div class="settings-form-box">
+            <div class="form-row flex-between">
+              <div>
+                <strong>Two-Factor Biometric Authentication</strong>
+                <p class="text-muted">Require hardware key or authentication app upon client login.</p>
+              </div>
+              <input type="checkbox" checked class="toggle-checkbox">
+            </div>
+            <hr class="dash-divider">
+            <div class="form-row flex-between">
+              <div>
+                <strong>Off-Market Pre-Notification</strong>
+                <p class="text-muted">Receive encrypted SMS alert 48 hours before an estate hits public listing.</p>
+              </div>
+              <input type="checkbox" checked class="toggle-checkbox">
+            </div>
+            <hr class="dash-divider">
+            <div class="form-row flex-between">
+              <div>
+                <strong>Preferred Currency Display</strong>
+                <p class="text-muted">Auto-convert listings across the platform.</p>
+              </div>
+              <select class="form-select w-200" onchange="setCurrency(this.value)">
+                <option value="USD">USD ($)</option>
+                <option value="AED">AED (د.إ)</option>
+                <option value="PKR">PKR (₨)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="GBP">GBP (£)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       19: LIVE MESSAGING & ADVISORY CHAT DRAWER
+  ==================================================================== -->
+  <div class="drawer-backdrop" id="messages-backdrop" onclick="closeMessagesDrawer()"></div>
+  <aside class="messages-drawer" id="messages-drawer">
+    <div class="messages-drawer-header">
+      <div class="chat-agent-info">
+        <div class="agent-avatar-chat" id="chat-agent-avatar"
+          style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=70');">
+        </div>
+        <div>
+          <h4 id="chat-agent-name">Tariq Al-Mansoor</h4>
+          <span class="online-indicator"><span class="green-dot"></span> Senior Partner &bull; Active Now</span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" onclick="closeMessagesDrawer()" aria-label="Close Chat">&times;</button>
+    </div>
+
+    <!-- Active Property Reference Chip -->
+    <div class="chat-property-chip" id="chat-property-chip">
+      <span class="chip-label">Inquiry Regarding:</span>
+      <span class="chip-title" id="chat-chip-title">The Margalla Ridge Sanctuary ($4,850,000)</span>
+    </div>
+
+    <!-- Chat Messages Container -->
+    <div class="chat-messages-container" id="chat-messages-container">
+      <div class="chat-bubble received">
+        <p>Good day. I am Tariq Al-Mansoor, Senior Partner at Elysian. How may our private desk assist your acquisition
+          or portfolio review today?</p>
+        <span class="chat-time">Just now</span>
+      </div>
+    </div>
+
+    <!-- Quick Inquiry Suggestions -->
+    <div class="chat-suggestions-bar">
+      <button class="chat-quick-btn" onclick="sendQuickMessage('Is the price negotiable on this property?')">Price
+        Flexibility?</button>
+      <button class="chat-quick-btn"
+        onclick="sendQuickMessage('Can you arrange a private viewing this weekend?')">Schedule Weekend Tour</button>
+      <button class="chat-quick-btn"
+        onclick="sendQuickMessage('Please provide verified title deed documentation.')">Title Deed Proof</button>
+    </div>
+
+    <!-- Chat Input Area -->
+    <form class="chat-input-area" id="chat-form" onsubmit="handleChatMessageSubmit(event)">
+      <input type="text" id="chat-text-input" placeholder="Type confidential message to advisor..." autocomplete="off"
+        required>
+      <button type="submit" class="btn-chat-send" aria-label="Send Message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-svg">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </form>
+  </aside>
+
+  <!-- ====================================================================
+       FAVORITES QUICK DRAWER
+  ==================================================================== -->
+  <div class="drawer-backdrop" id="favorites-backdrop" onclick="closeFavoritesDrawer()"></div>
+  <aside class="favorites-drawer" id="favorites-drawer">
+    <div class="favorites-drawer-header">
+      <div class="fav-header-titles">
+        <h3>Saved Holdings</h3>
+        <span class="fav-count-pill" id="fav-drawer-count">0 Properties</span>
+      </div>
+      <button class="drawer-close-btn" onclick="closeFavoritesDrawer()" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="favorites-drawer-body" id="favorites-drawer-body">
+      <!-- Injected dynamically -->
+    </div>
+
+    <div class="favorites-drawer-footer">
+      <button class="btn-glass" onclick="closeFavoritesDrawer(); openDashboardModal('favorites');">Manage in
+        Dashboard</button>
+      <button class="btn-premium-cta" onclick="closeFavoritesDrawer(); quickInquireAllFavorites();">Inquire on
+        All</button>
+    </div>
+  </aside>
+
+  <!-- ====================================================================
+       SHARE PROPERTY MODAL
+  ==================================================================== -->
+  <div class="modal-backdrop" id="share-modal-backdrop" onclick="closeShareModal()"></div>
+  <div class="luxury-modal share-modal" id="share-modal">
+    <button class="modal-close-btn" onclick="closeShareModal()" aria-label="Close">&times;</button>
+    <div class="share-modal-header">
+      <h3>Share Holding Dossier</h3>
+      <p>Discreetly share this verified architectural holding with family or your wealth counsel.</p>
+    </div>
+    <div class="share-input-group">
+      <input type="text" id="share-link-input" readonly class="form-input">
+      <button class="btn-premium-cta" onclick="copyShareLink()">
+        <span id="share-btn-text">Copy Link</span>
+      </button>
+    </div>
+    <div class="share-social-channels">
+      <button class="btn-glass" onclick="shareViaChannel('whatsapp')">WhatsApp</button>
+      <button class="btn-glass" onclick="shareViaChannel('email')">Confidential Email</button>
+      <button class="btn-glass" onclick="shareViaChannel('twitter')">X / Twitter</button>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       READ ARTICLE / INSIGHTS MODAL
+  ==================================================================== -->
+  <div class="modal-backdrop" id="article-modal-backdrop" onclick="closeArticleModal()"></div>
+  <div class="luxury-modal article-modal" id="article-modal">
+    <button class="modal-close-btn" onclick="closeArticleModal()" aria-label="Close">&times;</button>
+    <div class="article-modal-body" id="article-modal-body">
+      <!-- Injected dynamically -->
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       CLIENT SIGN-IN / AUTH MODAL
+  ==================================================================== -->
+  <div class="modal-backdrop" id="auth-modal-backdrop" onclick="closeAuthModal()"></div>
+  <div class="luxury-modal auth-modal" id="auth-modal">
+    <button class="modal-close-btn" onclick="closeAuthModal()" aria-label="Close">&times;</button>
+    <div class="auth-modal-inner">
+      <div class="gold-crest-badge">PRIVATE CLIENT PORTAL</div>
+      <h3 id="auth-modal-title">Accredited Member Sign-In</h3>
+      <p class="auth-sub">Access restricted portfolios, private escrow status, and direct broker channels.</p>
+
+      <form class="auth-form" id="auth-form" onsubmit="handleAuthSubmit(event)">
+        <div class="form-field">
+          <label for="auth-email" class="form-label">Client Email / Account ID</label>
+          <input type="email" id="auth-email" class="form-input" placeholder="principal@sovereignholdings.com" required
+            value="investor@elysian-estates.com">
+        </div>
+        <div class="form-field">
+          <label for="auth-password" class="form-label">Password / Security Key</label>
+          <input type="password" id="auth-password" class="form-input" placeholder="••••••••••••" required
+            value="LuxuryEstate2026!">
+        </div>
+        <div class="form-row flex-between mb-4">
+          <label class="checkbox-item"><input type="checkbox" checked> <span>Remember device</span></label>
+          <a href="#" class="gold-link" onclick="triggerToast('Reset link sent to client registry.')">Reset Security
+            Key?</a>
+        </div>
+        <button type="submit" class="btn-premium-cta full-width">
+          <span>Authenticate & Enter Portal</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       NOTICE / LEGAL MODAL
+  ==================================================================== -->
+  <div class="modal-backdrop" id="notice-modal-backdrop" onclick="closeNoticeModal()"></div>
+  <div class="luxury-modal notice-modal" id="notice-modal">
+    <button class="modal-close-btn" onclick="closeNoticeModal()" aria-label="Close">&times;</button>
+    <div class="notice-modal-inner">
+      <h3 id="notice-modal-title">Legal Protocol</h3>
+      <p id="notice-modal-text">Details will be presented here.</p>
+      <div class="mt-4 text-right">
+        <button class="btn-premium-cta" onclick="closeNoticeModal()">Understood</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       GLOBAL TOAST NOTIFICATIONS
+  ==================================================================== -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Core Javascript Logic directly in root -->
+  <script src="app.js"></script>
+</body>
+
+</html>
